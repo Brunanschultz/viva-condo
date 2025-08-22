@@ -1,32 +1,35 @@
 "use client";
 
-type Morador = {
-  primeiroNome: string;
-  sobrenome: string;
-}
+const Home = () =>{
 
-export default function Home() {
-
-  const morador = {
-    primeiroNome: 'Sandro',
-    sobrenome: 'pereira'
+  type Morador = {
+    primeiroNome: string,
+    sobrenome: string
   }
 
-  function obterSaudacao(morador:null | Morador){
-    if(morador){
-      return <span>Olá, {formatarNomeMorador(morador)}!</span>
-    }
-    return <span>Olá, Estranho!!!</span>
+  const morador: Morador = {
+    primeiroNome: "João",
+    sobrenome: "Pereira"
   }
-
-  function formatarNomeMorador(morador:Morador){
-    return morador.primeiroNome + ' ' + morador.sobrenome
+  function formatarNomeMorador(morador: Morador){
+    return morador.primeiroNome + ' ' + morador.sobrenome;
   }
-
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold"> {obterSaudacao(morador)} </h1>
+  function obterSaudacao(morador: null | Morador){
+    if(morador)
+      return "Olá, " + formatarNomeMorador(morador)
+    return "Olá estranho"
+  }
+  
+  return(
+    <div id="principal" className="min-h-screen flex items-center justify-center bg-black">
+      <div id="componente-azul" className="card-azul">
+        <h1 id="name" className="text-2xl font-bold text-center">
+          {obterSaudacao(morador)}
+          </h1>
+        </div>
+      
     </div>
   )
 }
 
+export default Home
